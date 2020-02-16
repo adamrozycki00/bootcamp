@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Podsumowanie</title>
+</head>
+<body>
+<!--    <h1>Dodano użytkownika: <span th:text="${firstName} + ' ' + ${lastName}"></span></h1>-->
+    <h1>Dodano użytkownika: <span th:text="${user.firstName} + ' ' + ${user.lastName}"></span></h1>
+
+    <div><a th:href="@{/rejestracja}">Wróć do rejestracji</a></div>
+</body>
+</html>

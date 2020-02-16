@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>Rejestracja</h1>
+
+    <form th:action="@{/rejestracja/podsumowanie}" method="get">
+        Imię: <input type="text" name="firstName"><br />
+        Nazwisko: <input type="text" name="lastName"><br />
+        E-mail: <input type="email" name="mail"><br />
+        <input type="submit" value="Rejestruj"><br />
+    </form>
+
+    <form th:action="@{/rejestracja/podsumowanie}" method="post" th:object="${user}">
+        Imię: <input type="text" th:field="*{firstName}"><br />
+        Nazwisko: <input type="text" th:field="*{lastName}"><br />
+        E-mail: <input type="email" th:field="*{mail}"><br />
+        <input type="submit" value="Rejestruj"><br />
+    </form>
+
+</body>
+</html>
