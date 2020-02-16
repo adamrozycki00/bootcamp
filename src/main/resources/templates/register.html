@@ -8,17 +8,22 @@
 <body>
     <h1>Rejestracja</h1>
 
-    <form th:action="@{/rejestracja/podsumowanie}" method="get">
-        Imię: <input type="text" name="firstName"><br />
-        Nazwisko: <input type="text" name="lastName"><br />
-        E-mail: <input type="email" name="mail"><br />
-        <input type="submit" value="Rejestruj"><br />
-    </form>
-
     <form th:action="@{/rejestracja/podsumowanie}" method="post" th:object="${user}">
         Imię: <input type="text" th:field="*{firstName}"><br />
         Nazwisko: <input type="text" th:field="*{lastName}"><br />
         E-mail: <input type="email" th:field="*{mail}"><br />
+        Telefon: <input type="text" th:field="*{phone}"><br />
+
+        Wybierz kurs:
+        <select name="" id="" th:field="*{course}">
+            <option
+                    th:each="c: ${courseList}"
+                    th:text="${c.name} + ' - ' + ${c.mode}"
+                    th:value="${c.name} + ' - ' + ${c.mode}">
+            </option>
+        </select>
+        <br />
+
         <input type="submit" value="Rejestruj"><br />
     </form>
 

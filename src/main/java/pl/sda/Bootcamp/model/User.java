@@ -6,7 +6,7 @@ public class User {
     private String lastName;
     private String mail;
     private String phone;
-    private Course course;
+    private String course;
 
     public String getFirstName() {
         return firstName;
@@ -40,11 +40,11 @@ public class User {
         this.phone = phone;
     }
 
-    public Course getCourse() {
+    public String getCourse() {
         return course;
     }
 
-    public void setCourse(Course course) {
+    public void setCourse(String course) {
         this.course = course;
     }
 }

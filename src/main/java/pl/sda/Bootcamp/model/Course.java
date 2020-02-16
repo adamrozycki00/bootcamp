@@ -10,6 +10,11 @@ public class Course {
     private int price;
     private String mode;
 
+    public Course(String name, String mode) {
+        this.name = name;
+        this.mode = mode;
+    }
+
     public String getName() {
         return name;
     }
