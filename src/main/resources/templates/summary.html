@@ -8,12 +8,12 @@
 <body>
     <h1>Dodano użytkownika: <span th:text="${user.firstName} + ' ' + ${user.lastName}"></span></h1>
 
-    <div>
-        Imię: <span th:text="${user.firstName}"></span><br />
-        Nazwisko: <span th:text="${user.lastName}"></span><br />
-        E-mail: <span th:text="${user.mail}"></span><br />
-        Telefon: <span th:text="${user.phone}"></span><br />
-        Kurs: <span th:text="${user.course}"></span><br />
+    <div th:object="${user}">
+        Imię: <span th:text="*{firstName}"></span><br />
+        Nazwisko: <span th:text="*{lastName}"></span><br />
+        E-mail: <span th:text="*{mail}"></span><br />
+        Telefon: <span th:text="*{phone}"></span><br />
+        Kurs: <span th:text="*{course}"></span><br />
     </div>
 
     <div><a th:href="@{/rejestracja}">Wróć do rejestracji</a></div>

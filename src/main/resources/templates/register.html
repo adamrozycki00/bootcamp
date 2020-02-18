@@ -3,7 +3,7 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Rejestracja</title>
 </head>
 <body>
     <h1>Rejestracja</h1>
@@ -15,7 +15,7 @@
         Telefon: <input type="text" th:field="*{phone}"><br />
 
         Wybierz kurs:
-        <select name="" id="" th:field="*{course}">
+        <select th:field="*{course}">
             <option
                     th:each="c: ${courseList}"
                     th:text="${c.name} + ' - ' + ${c.mode}"
