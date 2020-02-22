@@ -6,7 +6,7 @@
     <title>Rejestracja</title>
 </head>
 <body>
-    <h1>Rejestracja</h1>
+    <h1>Rejestracja na kurs</h1>
 
     <form th:action="@{/rejestracja/podsumowanie}" method="post" th:object="${user}">
         Imię: <input type="text" th:field="*{firstName}"><br />
@@ -16,12 +16,12 @@
 
         Wybierz kurs:
         <select th:field="*{course}">
-            <option
-                    th:each="c: ${courseList}"
-                    th:text="${c.name} + ' - ' + ${c.mode}"
-                    th:value="${c.name} + ' - ' + ${c.mode}">
+            <option th:each="c: ${courseList}"
+                th:text="${c.name} + ' - ' + ${c.mode}"
+                th:value="${c.name} + ' - ' + ${c.mode}">
             </option>
         </select>
+
         <br />
 
         <input type="submit" value="Rejestruj"><br />

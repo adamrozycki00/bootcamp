@@ -20,6 +20,7 @@ public class RegisterController {
         courseList.add(new Course("Java", "weekendowy"));
         courseList.add(new Course("Frontend", "wieczorowy"));
         courseList.add(new Course("Python", "wieczorowy"));
+        courseList.add(new Course("Python", "dzienny"));
 
         model.addAttribute("courseList", courseList);
         model.addAttribute("user", new User());
