@@ -30,7 +30,7 @@ public class CourseController {
     }
 
     @GetMapping("/dodaj-kurs")
-    public String addCourse(Model model) {
+    public String displayForm(Model model) {
         Course course = new Course();
         model.addAttribute("course", course);
         return "/addCourse";
@@ -40,6 +40,13 @@ public class CourseController {
     public String deleteCourse(@RequestParam Long id) {
         courseService.delete(id);
         return "redirect:lista";
+    }
+
+    @GetMapping("/edytuj")
+    public String editCourse(@RequestParam Long id,
+                             Model model) {
+        model.addAttribute("course", courseService.getCourse(id));
+        return "/course/add";
     }
 
 }
