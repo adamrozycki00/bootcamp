@@ -15,7 +15,7 @@
             <th>Data zak</th>
             <th>Cena</th>
             <th>Tryb</th>
-            <th>Akcja</th>
+            <th></th>
         </tr>
         <tr th:each="c : ${courseList}">
             <td th:text="*{c.name}"></td>
@@ -24,13 +24,13 @@
             <td th:text="*{c.getPrice()}"></td>
             <td th:text="*{c.getMode()}"></td>
             <td>
-                <a th:href="@{/kurs/usun(id=${c.id})}">Usuń</a>
                 <a th:href="@{/kurs/edytuj(id=${c.id})}">Edytuj</a>
+                | <a th:href="@{/kurs/usun(id=${c.id})}">Usuń</a>
             </td>
         </tr>
     </table><br />
 
-    <a th:href="@{/kurs/dodaj-kurs}">Wróć do formularza</a>
+    <a th:href="@{/kurs/dodaj}">Dodaj kurs</a>
 
 
 </body>

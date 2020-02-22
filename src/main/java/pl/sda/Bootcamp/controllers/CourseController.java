@@ -29,11 +29,10 @@ public class CourseController {
         return "redirect:lista";
     }
 
-    @GetMapping("/dodaj-kurs")
-    public String displayForm(Model model) {
-        Course course = new Course();
-        model.addAttribute("course", course);
-        return "/addCourse";
+    @GetMapping("/dodaj")
+    public String addCourse(Model model) {
+        model.addAttribute("course", new Course());
+        return "/course/add";
     }
 
     @GetMapping("/usun")
