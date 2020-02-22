@@ -15,6 +15,7 @@
             <th>Data zak</th>
             <th>Cena</th>
             <th>Tryb</th>
+            <th>Akcja</th>
         </tr>
         <tr th:each="c : ${courseList}">
             <td th:text="*{c.name}"></td>
@@ -22,6 +23,7 @@
             <td th:text="*{c.dateEnd}"></td>
             <td th:text="*{c.getPrice()}"></td>
             <td th:text="*{c.getMode()}"></td>
+            <td><a th:href="@{/kurs/usun(id=${c.id})}">Usuń</a></td>
         </tr>
     </table><br />
 

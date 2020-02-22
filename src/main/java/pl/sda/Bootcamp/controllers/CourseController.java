@@ -36,4 +36,10 @@ public class CourseController {
         return "/addCourse";
     }
 
+    @GetMapping("/usun")
+    public String deleteCourse(@RequestParam Long id) {
+        courseService.delete(id);
+        return "redirect:lista";
+    }
+
 }
