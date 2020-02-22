@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Dodawanie kursu</title>
+</head>
+<body>
+
+    <h1>Dodawanie kursu</h1>
+
+    <form th:action="@{/kurs/lista}" method="post" th:object="${course}">
+        Nazwa: <input type="text" th:field="*{name}"><br />
+        Data rozpoczęcia: <input type="date" th:field="*{dateStart}"><br />
+        Data zakończenia: <input type="date" th:field="*{dateEnd}"><br />
+        Cena: <input type="text" th:field="*{price}"><br />
+        Tryb:
+        <select th:field="*{mode}">
+            <option th:text="dzienny" th:value="dzienny"></option>
+            <option th:text="weekendowy" th:value="weekendowy"></option>
+            <option th:text="wieczorowy" th:value="wieczorowy"></option>
+        </select><br />
+
+        <input type="submit" value="Zapisz"><br />
+    </form>
+
+
+
+</body>
+</html>
