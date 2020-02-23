@@ -4,16 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
 </head>
 <body>
 
+    <header th:replace="fragments/header::menu"></header>
+
     <h1>Strona główna - Witaj!</h1>
 
-    <ul>
-        <li><a th:href="@{/kurs/lista}">Lista kursów</a></li>
-        <li><a th:href="@{/student/lista}">Lista studentów</a></li>
-        <li><a th:href="@{/rejestracja}">Rejestracja</a></li>
-    </ul>
 
 </body>
 </html>

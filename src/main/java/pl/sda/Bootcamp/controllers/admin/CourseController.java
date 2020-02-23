@@ -18,7 +18,7 @@ public class CourseController {
 
     @GetMapping("/lista")
     public String showList(Model model) {
-        List<Course> courseList = courseService.findAll();
+        List<Course> courseList = courseService.findAllSorted();
         model.addAttribute("courseList", courseList);
         List<Course> courseByName = courseService.findByName("Java");
         List<Course> courseByNameQuery = courseService.findByNameQuery("Java");
