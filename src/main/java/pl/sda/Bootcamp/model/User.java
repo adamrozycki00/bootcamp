@@ -13,9 +13,13 @@ public class User {
     private Long id;
 
     private String firstName;
+
     private String lastName;
+
     private String mail;
+
     private String phone;
+
     private String course;
 
     public User() {

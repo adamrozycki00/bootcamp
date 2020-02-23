@@ -29,4 +29,18 @@ public class CourseService {
         return courseRepository.getOne(id);
     }
 
+    public List<Course> findByName(String name) {
+        return courseRepository.findByName(name);
+    }
+
+    public List<Course> findByNameQuery(String name) {
+        return courseRepository.findByNameQuery(name);
+    }
+
+    public List<Course> findByNameAndPriceGreaterThanEqual(String name, int minPrice) {
+        return courseRepository.findByNameAndPriceGreaterThanEqual(name, minPrice);
+    }
+
+
+
 }

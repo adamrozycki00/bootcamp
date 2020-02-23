@@ -22,7 +22,9 @@ public class Course {
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate dateEnd;
+
     private int price;
+
     private String mode;
 
     public Course() {
