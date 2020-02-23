@@ -13,7 +13,10 @@
         Nazwisko: <span th:text="*{lastName}"></span>
         E-mail: <span th:text="*{mail}"></span>
         Telefon: <span th:text="*{phone}"></span>
-        Kurs: <span th:text="*{course}"></span>
+        Wybrane kursy:
+        <ul>
+            <li th:each="c : ${user.courses}" th:text="${c.name}"></li>
+        </ul>
     </div>
 
     <br />

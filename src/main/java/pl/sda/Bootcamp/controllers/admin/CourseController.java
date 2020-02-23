@@ -1,4 +1,4 @@
-package pl.sda.Bootcamp.controllers;
+package pl.sda.Bootcamp.controllers.admin;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,7 +10,7 @@ import pl.sda.Bootcamp.service.CourseService;
 import java.util.List;
 
 @Controller
-@RequestMapping("/kurs")
+@RequestMapping("/admin/kurs")
 public class CourseController {
 
     @Autowired

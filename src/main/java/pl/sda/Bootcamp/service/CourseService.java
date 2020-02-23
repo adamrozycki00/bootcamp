@@ -45,8 +45,9 @@ public class CourseService {
         return courseRepository.findByNameAndPriceGreaterThanEqual(name, minPrice);
     }
 
-
-
+    public List<Course> findAllSorted() {
+        return courseRepository.findAllSorted();
+    }
 
 
 }

@@ -9,7 +9,7 @@
 
     <h1>Dodawanie kursu</h1>
 
-    <form th:action="@{/kurs/lista}" method="post" th:object="${course}">
+    <form th:action="@{/admin/kurs/lista}" method="post" th:object="${course}">
         Nazwa: <input type="text" th:field="*{name}"><br />
         Data rozpoczęcia: <input type="date" th:field="*{dateStart}"><br />
         Data zakończenia: <input type="date" th:field="*{dateEnd}"><br />

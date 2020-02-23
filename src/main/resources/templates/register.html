@@ -12,17 +12,22 @@
         Imię: <input type="text" th:field="*{firstName}"><br />
         Nazwisko: <input type="text" th:field="*{lastName}"><br />
         E-mail: <input type="email" th:field="*{mail}"><br />
+        Hasło: <input type="password" th:field="*{password}"><br />
         Telefon: <input type="text" th:field="*{phone}"><br />
 
         Wybierz kurs:
-        <select th:field="*{course}">
-            <option th:each="c: ${courseList}"
-                th:text="${c.name} + ' - ' + ${c.mode}"
-                th:value="${c.name} + ' - ' + ${c.mode}">
-            </option>
-        </select>
-
-        <br />
+<!--        <select th:field="*{course}">-->
+<!--            <option th:each="c: ${courseList}"-->
+<!--                th:text="${c.name} + ' - ' + ${c.mode}"-->
+<!--                th:value="${c.id}">-->
+<!--            </option>-->
+<!--        </select>-->
+        <p th:each="c : ${courseList}">
+            <input type="checkbox"
+                   th:field="*{courses}"
+                   th:text="${c.name} + ' - ' + ${c.mode}"
+                   th:value="${c.id}">
+        </p><br />
 
         <input type="submit" value="Rejestruj"><br />
     </form>

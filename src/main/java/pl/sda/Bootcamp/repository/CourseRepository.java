@@ -21,6 +21,9 @@ public interface CourseRepository extends JpaRepository<Course, Long> {
     @Query(name = "Course.findByMode")
     List<Course> findByModeQuery(@Param("mode") String mode);
 
+    @Query(value = "select * from Course order by name, mode", nativeQuery = true)
+    List<Course> findAllSorted();
+
 
 
 }

@@ -1,9 +1,7 @@
 package pl.sda.Bootcamp.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class User {
@@ -20,9 +18,24 @@ public class User {
 
     private String phone;
 
-    private String course;
+    private String password;
+
+    @ManyToMany
+    private List<Course> courses;
+
+    @ManyToOne
+    @JoinColumn(name = "role_id")
+    private Role role;
 
     public User() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getFirstName() {
@@ -57,11 +70,27 @@ public class User {
         this.phone = phone;
     }
 
-    public String getCourse() {
-        return course;
+    public List<Course> getCourses() {
+        return courses;
     }
 
-    public void setCourse(String course) {
-        this.course = course;
+    public void setCourses(List<Course> courses) {
+        this.courses = courses;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

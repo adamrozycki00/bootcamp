@@ -1,15 +1,18 @@
 package pl.sda.Bootcamp.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
-import pl.sda.Bootcamp.model.Course;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import pl.sda.Bootcamp.model.User;
+import pl.sda.Bootcamp.service.CourseService;
+import pl.sda.Bootcamp.service.RoleService;
 import pl.sda.Bootcamp.service.UserService;
-
-import java.util.LinkedList;
-import java.util.List;
 
 @Controller
 @RequestMapping("/rejestracja")
@@ -18,26 +21,28 @@ public class RegisterController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private CourseService courseService;
+
+    @Autowired
+    private RoleService roleService;
+
     @GetMapping("")
     public String register(Model model) {
-
-        List<Course> courseList = new LinkedList<>();
-        courseList.add(new Course("Java", "dzienny"));
-        courseList.add(new Course("Java", "weekendowy"));
-        courseList.add(new Course("Frontend", "wieczorowy"));
-        courseList.add(new Course("Frontend", "weekendowy"));
-        courseList.add(new Course("Python", "dzienny"));
-        courseList.add(new Course("Python", "weekendowy"));
-
-        model.addAttribute("courseList", courseList);
+        model.addAttribute("courseList", courseService.findAllSorted());
         model.addAttribute("user", new User());
-
         return "/register";
     }
 
     @PostMapping("/podsumowanie")
     public String summaryRegister(@ModelAttribute User user,
                                   Model model) {
+        user.setRole(roleService.findByRoleName("user"));
+
+        /** Kodowanie hasła studenta w bazie danych */
+        PasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+
         model.addAttribute("user", user);
         userService.save(user);
         return "/summary";
