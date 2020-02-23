@@ -22,8 +22,10 @@ public class CourseController {
         model.addAttribute("courseList", courseList);
         List<Course> courseByName = courseService.findByName("Java");
         List<Course> courseByNameQuery = courseService.findByNameQuery("Java");
+        List<Course> courseByModeQuery = courseService.findByModeQuery("weekendowy");
         List<Course> courseByNameAndPrice = courseService.findByNameAndPriceGreaterThanEqual("Java", 5000);
         System.out.println(courseByName);
+        System.out.println(courseByModeQuery);
         System.out.println(courseByNameAndPrice);
         System.out.println(courseByNameQuery);
         return "/course/list";

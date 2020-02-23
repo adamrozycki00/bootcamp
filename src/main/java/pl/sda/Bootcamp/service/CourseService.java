@@ -37,9 +37,15 @@ public class CourseService {
         return courseRepository.findByNameQuery(name);
     }
 
+    public List<Course> findByModeQuery(String mode) {
+        return courseRepository.findByModeQuery(mode);
+    }
+
     public List<Course> findByNameAndPriceGreaterThanEqual(String name, int minPrice) {
         return courseRepository.findByNameAndPriceGreaterThanEqual(name, minPrice);
     }
+
+
 
 
 

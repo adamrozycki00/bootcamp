@@ -2,13 +2,12 @@ package pl.sda.Bootcamp.model;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
+@NamedQuery(name = "Course.findByMode",
+        query = "select c from Course c where c.mode = :mode")
 public class Course {
 
     @Id
