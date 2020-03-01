@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista studentów</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+    <h1>Lista studentów</h1>
+
+    <ol>
+        <li th:each = "s : ${studentList}">
+            <span th:text = "${s.firstName} + ' ' + ${s.lastName}"></span>
+            | <span><a th:href="@{/user/edytuj(id=${s.id})}">Edytuj</a></span>
+            | <span><a th:href="@{/user/usun(id=${s.id})}">Usuń</a></span>
+        </li>
+    </ol>
+
+</body>
+</html>

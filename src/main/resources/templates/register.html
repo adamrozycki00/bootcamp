@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Rejestracja</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
 </head>
 <body>
     <h1>Rejestracja na kurs</h1>
@@ -29,7 +30,9 @@
                    th:value="${c.id}">
         </p><br />
 
-        <input type="submit" value="Rejestruj"><br />
+        <input type="hidden" th:field="*{id}">
+        <input type="hidden" th:field="*{role}">
+        <input type="submit" value="Zapisz"><br />
     </form>
 
 </body>

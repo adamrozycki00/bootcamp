@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Podsumowanie</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
 </head>
 <body>
     <h1>Dodano użytkownika: <span th:text="${user.firstName} + ' ' + ${user.lastName}"></span></h1>
@@ -14,8 +15,8 @@
         E-mail: <span th:text="*{mail}"></span>
         Telefon: <span th:text="*{phone}"></span>
         Wybrane kursy:
-        <ul>
-            <li th:each="c : ${user.courses}" th:text="${c.name}"></li>
+        <ul th:each="c : ${user.courses}">
+            <li th:text="${c.name}"></li>
         </ul>
     </div>
 

@@ -8,17 +8,21 @@
 </head>
 <body>
 
+
+
     <ul th:fragment="menu">
         <li sec:authorize="!isAuthenticated()">
             <a th:href="@{/login}">Zaloguj się</a></li>
-        <li sec:authorize="hasAnyAuthority('admin')">
-            <a th:href="@{/admin/kurs/lista}">Lista kursów</a></li>
-        <li>
-            <a th:href="@{/student/lista}">Lista studentów</a></li>
-        <li>
-            <a th:href="@{/rejestracja}">Rejestracja</a></li>
         <li sec:authorize="isAuthenticated()">
             <a th:href="@{/logout}">Wyloguj się</a></li>
+        <li sec:authorize="isAuthenticated()">
+            <a th:href="@{/admin/kurs/lista}">Lista kursów</a></li>
+        <li sec:authorize="isAuthenticated()">
+            <a th:href="@{/user/trenerzy/lista}">Lista trenerów</a></li>
+        <li sec:authorize="hasAnyAuthority('admin', 'trainer')">
+            <a th:href="@{/user/lista}">Lista studentów</a></li>
+        <li>
+            <a th:href="@{/rejestracja}">Rejestracja</a></li>
     </ul>
 
 </body>

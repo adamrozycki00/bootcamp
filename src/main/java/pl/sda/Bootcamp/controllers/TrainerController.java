@@ -6,12 +6,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import pl.sda.Bootcamp.model.User;
 import pl.sda.Bootcamp.service.CourseService;
+import pl.sda.Bootcamp.service.RoleService;
 import pl.sda.Bootcamp.service.UserService;
 
 @Controller
-@RequestMapping("/user")
-public class UserController {
+@RequestMapping("/user/trenerzy")
+public class TrainerController {
 
     @Autowired
     private UserService userService;
@@ -19,30 +21,36 @@ public class UserController {
     @Autowired
     private CourseService courseService;
 
-    @GetMapping("")
-    public String dashboard() {
-        return "/user/dashboard";
-    }
+    @Autowired
+    private RoleService roleService;
 
     @GetMapping("/lista")
-    public String showStudentList(Model model) {
-        System.out.println("Inside method showStudentList()");
-        model.addAttribute("studentList", userService.findAllStudents());
-        return "/user/list";
+    public String showTrainerList(Model model) {
+        model.addAttribute("trainerList", userService.findAllTrainers());
+        return "/user/trainer-list";
     }
 
     @GetMapping("/edytuj")
-    public String editUser(@RequestParam Long id,
-                             Model model) {
+    public String editTrainer(@RequestParam Long id,
+                              Model model) {
         model.addAttribute("courseList", courseService.findAllSorted());
         model.addAttribute("user", userService.getUser(id));
         return "/register";
     }
 
     @GetMapping("/usun")
-    public String deleteUser(@RequestParam Long id) {
+    public String deleteTrainer(@RequestParam Long id) {
         userService.deleteUser(id);
         return "redirect:lista";
+    }
+
+    @GetMapping("/dodaj")
+    public String addTrainer(Model model) {
+        User trainer = new User();
+        trainer.setRole(roleService.findByRoleName("trainer"));
+        model.addAttribute("user", trainer);
+        model.addAttribute("courseList", courseService.findAllSorted());
+        return "/register";
     }
 
 

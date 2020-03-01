@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html   lang="en"
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista trenerów</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+    <h1>Lista trenerów</h1>
+
+    <ol>
+        <li th:each = "t : ${trainerList}">
+            <span th:text = "${t.firstName} + ' ' + ${t.lastName}"></span>
+            <span sec:authorize="hasAuthority('admin')">
+                | <a th:href="@{/user/trenerzy/edytuj(id=${t.id})}">Edytuj</a>
+                | <a th:href="@{/user/trenerzy/usun(id=${t.id})}">Usuń</a>
+            </span>
+        </li>
+    </ol><br />
+
+    <a sec:authorize="hasAuthority('admin')" th:href="@{/user/trenerzy/dodaj}">Dodaj trenera</a>
+    <a th:href="@{/}">Strona główna</a>
+
+</body>
+</html>

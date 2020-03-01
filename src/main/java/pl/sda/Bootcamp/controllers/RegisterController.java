@@ -19,10 +19,10 @@ import pl.sda.Bootcamp.service.UserService;
 public class RegisterController {
 
     @Autowired
-    private UserService userService;
+    private CourseService courseService;
 
     @Autowired
-    private CourseService courseService;
+    private UserService userService;
 
     @Autowired
     private RoleService roleService;
@@ -37,14 +37,15 @@ public class RegisterController {
     @PostMapping("/podsumowanie")
     public String summaryRegister(@ModelAttribute User user,
                                   Model model) {
-        user.setRole(roleService.findByRoleName("user"));
+        if (user.getRole() == null)
+            user.setRole(roleService.findByRoleName("user"));
 
         /** Kodowanie hasła studenta w bazie danych */
         PasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 
-        model.addAttribute("user", user);
         userService.save(user);
+        model.addAttribute("user", user);
         return "/summary";
     }
 

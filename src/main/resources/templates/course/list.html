@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html lang="en"
-      xmlns:th="http://www.thymeleaf.org">
+<html   lang="en"
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Lista kursów</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
 </head>
 <body>
     <h1>Lista kursów</h1>
@@ -15,23 +17,23 @@
             <th>Data zak</th>
             <th>Cena</th>
             <th>Tryb</th>
-            <th></th>
+            <th sec:authorize="hasAuthority('admin')">Edycja</th>
         </tr>
         <tr th:each="c : ${courseList}">
-            <td th:text="*{c.name}"></td>
-            <td th:text="*{c.dateStart}"></td>
-            <td th:text="*{c.dateEnd}"></td>
-            <td th:text="*{c.getPrice()}"></td>
-            <td th:text="*{c.getMode()}"></td>
-            <td>
-                <a th:href="@{/admin/kurs/edytuj(id=${c.id})}">Edytuj</a>
+            <td th:text="${c.name}"></td>
+            <td th:text="${c.dateStart}"></td>
+            <td th:text="${c.dateEnd}"></td>
+            <td th:text="${c.getPrice()}"></td>
+            <td th:text="${c.getMode()}"></td>
+            <td sec:authorize="hasAuthority('admin')">
+                <a  th:href="@{/admin/kurs/edytuj(id=${c.id})}">Edytuj</a>
                 | <a th:href="@{/admin/kurs/usun(id=${c.id})}">Usuń</a>
             </td>
         </tr>
     </table><br />
 
-    <a th:href="@{/admin/kurs/dodaj}">Dodaj kurs</a>
-
+    <a sec:authorize="hasAuthority('admin')" th:href="@{/admin/kurs/dodaj}">Dodaj kurs</a>
+    <a th:href="@{/}">Strona główna</a>
 
 </body>
 </html>
