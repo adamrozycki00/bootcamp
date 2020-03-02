@@ -11,17 +11,27 @@
     <h1>Lista trenerów</h1>
 
     <ol>
-        <li th:each = "t : ${trainerList}">
-            <span th:text = "${t.firstName} + ' ' + ${t.lastName}"></span>
-            <span sec:authorize="hasAuthority('admin')">
-                | <a th:href="@{/user/trenerzy/edytuj(id=${t.id})}">Edytuj</a>
-                | <a th:href="@{/user/trenerzy/usun(id=${t.id})}">Usuń</a>
-            </span>
+        <li th:if = "${t.firstName != 'Greta'}" th:each = "t : ${trainerList}">
+            <div>
+                <span th:text = "${t.firstName} + ' ' + ${t.lastName}"></span>
+                <span sec:authorize="hasAuthority('admin')">
+                    | <a th:href="@{/user/trenerzy/edytuj(id=${t.id})}">Edytuj</a>
+                    | <a th:href="@{/user/trenerzy/usun(id=${t.id})}">Usuń</a>
+                </span>
+            </div>
+            <div>
+                <ul>
+                    <li th:each = "c : ${coursesOfTrainers}">
+                        <div th:text = "${c}"></div>
+<!--                        <div th:text = "${c.name} + ' ' + ${c.mode} + ' ' + ${c.dateStart} + ' ' + ${c.dateEnd}"></div>-->
+                    </li>
+                </ul>
+            </div>
         </li>
     </ol><br />
 
-    <a sec:authorize="hasAuthority('admin')" th:href="@{/user/trenerzy/dodaj}">Dodaj trenera</a>
     <a th:href="@{/}">Strona główna</a>
+    <a sec:authorize="hasAuthority('admin')" th:href="@{/user/trenerzy/dodaj}">Dodaj trenera</a>
 
 </body>
 </html>

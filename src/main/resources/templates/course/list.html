@@ -32,8 +32,8 @@
         </tr>
     </table><br />
 
-    <a sec:authorize="hasAuthority('admin')" th:href="@{/admin/kurs/dodaj}">Dodaj kurs</a>
     <a th:href="@{/}">Strona główna</a>
+    <a sec:authorize="hasAuthority('admin')" th:href="@{/admin/kurs/dodaj}">Dodaj kurs</a>
 
 </body>
 </html>
