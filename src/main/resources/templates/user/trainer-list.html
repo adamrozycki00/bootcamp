@@ -11,7 +11,7 @@
     <h1>Lista trenerów</h1>
 
     <ol>
-        <li th:if = "${t.firstName != 'Greta'}" th:each = "t : ${trainerList}">
+        <li th:each = "t : ${trainerList}">
             <div>
                 <span th:text = "${t.firstName} + ' ' + ${t.lastName}"></span>
                 <span sec:authorize="hasAuthority('admin')">
@@ -21,9 +21,11 @@
             </div>
             <div>
                 <ul>
-                    <li th:each = "c : ${coursesOfTrainers}">
-                        <div th:text = "${c}"></div>
-<!--                        <div th:text = "${c.name} + ' ' + ${c.mode} + ' ' + ${c.dateStart} + ' ' + ${c.dateEnd}"></div>-->
+                    <li th:each = "c : ${t.getCourses()}">
+                        <div>
+                            <span th:text = "${c.name} + ' - ' + ${c.mode} + ': '"></span>
+                            <span th:text = "${c.dateStart} + ' | ' + ${c.dateEnd}"></span>
+                        </div>
                     </li>
                 </ul>
             </div>

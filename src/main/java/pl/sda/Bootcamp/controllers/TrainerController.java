@@ -27,7 +27,6 @@ public class TrainerController {
     @GetMapping("/lista")
     public String showTrainerList(Model model) {
         model.addAttribute("trainerList", userService.findAllTrainers());
-        model.addAttribute("coursesOfTrainers", courseService.findCoursesOTrainers());
         return "/user/trainer-list";
     }
 

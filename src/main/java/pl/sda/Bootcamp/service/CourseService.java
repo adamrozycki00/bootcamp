@@ -29,7 +29,4 @@ public class CourseService {
         return courseRepository.findAllByOrderByNameAscModeAsc();
     }
 
-    public List<Object> findCoursesOTrainers() {
-        return courseRepository.findCoursesOTrainers();
-    }
 }
