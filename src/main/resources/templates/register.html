@@ -9,6 +9,14 @@
 <body>
     <h1>Rejestracja na kurs</h1>
 
+<!--    <p th:each="e : ${errors}" th:text="${e}"></p>-->
+
+    <div th:classappend="${errors} ? 'error_input'">
+        <div th:each="e : ${errors}" th:class="error">
+            <span th:text="${e}"></span>
+        </div>
+    </div><br />
+
     <form th:action="@{/rejestracja/podsumowanie}" method="post" th:object="${user}">
 
         Imię: <input type="text"

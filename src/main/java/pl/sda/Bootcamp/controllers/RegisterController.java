@@ -17,6 +17,7 @@ import pl.sda.Bootcamp.service.RoleService;
 import pl.sda.Bootcamp.service.UserService;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -45,10 +46,16 @@ public class RegisterController {
                                   Model model) {
         if (bindingResult.hasErrors()) {
             List<ObjectError> errors = bindingResult.getAllErrors();
+            List<String> listOfErrors = new ArrayList<>();
+            errors.forEach(err -> listOfErrors.add(err.getDefaultMessage()));
+            for (String s: listOfErrors) {
+                System.out.println(s);
+            }
+            model.addAttribute("errors", listOfErrors);
             model.addAttribute("courseList", courseService.findAllSorted());
-//            model.addAttribute("user", new User());
             return "/register";
-        } else {
+        }
+        else {
             if (user.getRole() == null)
                 user.setRole(roleService.findByRoleName("user"));
 
