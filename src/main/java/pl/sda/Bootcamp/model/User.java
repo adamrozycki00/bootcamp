@@ -1,6 +1,9 @@
 package pl.sda.Bootcamp.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import java.util.List;
 
 @Entity
@@ -10,10 +13,13 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank
     private String firstName;
 
+    @NotBlank
     private String lastName;
 
+    @Email
     private String mail;
 
     private String phone;
@@ -21,6 +27,7 @@ public class User {
     private String password;
 
     @ManyToMany
+    @NotEmpty
     private List<Course> courses;
 
     @ManyToOne
