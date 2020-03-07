@@ -13,13 +13,13 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
+    @NotBlank(message = "{pl.sda.Bootcamp.model.User.firstName.NotBlank}")
     private String firstName;
 
-    @NotBlank
+    @NotBlank(message = "{pl.sda.Bootcamp.model.User.lastName.NotBlank}")
     private String lastName;
 
-    @Email
+    @Email(message = "{pl.sda.Bootcamp.model.User.mail.Email}")
     private String mail;
 
     private String phone;
@@ -27,7 +27,7 @@ public class User {
     private String password;
 
     @ManyToMany
-    @NotEmpty
+    @NotEmpty(message = "{pl.sda.Bootcamp.model.User.courses.NotEmpty}")
     private List<Course> courses;
 
     @ManyToOne
