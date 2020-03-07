@@ -11,21 +11,28 @@
 
     <form th:action="@{/rejestracja/podsumowanie}" method="post" th:object="${user}">
 
-        <div th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></div>
-        Imię: <input type="text" th:field="*{firstName}"><br />
+        Imię: <input type="text"
+                     th:field="*{firstName}"
+                     th:classappend="${#fields.hasErrors('firstName')} ? 'error_input'" >
+        <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" th:class="error"></span>
+        <br />
 
-        <div th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></div>
-        Nazwisko: <input type="text" th:field="*{lastName}"><br />
+        Nazwisko: <input type="text"
+                         th:field="*{lastName}"
+                         th:classappend="${#fields.hasErrors('lastName')} ? 'error_input'" >
+        <span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" th:class="error"></span><br />
 
-        <div th:if="${#fields.hasErrors('mail')}" th:errors="*{mail}"></div>
-        E-mail: <input type="email" th:field="*{mail}"><br />
+        E-mail: <input type="email"
+                       th:field="*{mail}"
+                       th:classappend="${#fields.hasErrors('mail')} ? 'error_input'" >
+        <span th:if="${#fields.hasErrors('mail')}" th:errors="*{mail}" th:class="error"></span><br />
 
         Hasło: <input type="password" th:field="*{password}"><br />
 
         Telefon: <input type="text" th:field="*{phone}"><br />
 
-        <div th:if="${#fields.hasErrors('courses')}" th:errors="*{courses}"></div>
         Wybierz kurs:
+        <div th:if="${#fields.hasErrors('courses')}" th:errors="*{courses}" th:class="error"></div>
         <p th:each="c : ${courseList}">
             <input type="checkbox"
                    th:field="*{courses}"

@@ -1,3 +1,11 @@
 body {
     background-color: gainsboro;
 }
+
+.error {
+    color: red;
+}
+
+.error_input {
+    border: 2px solid red;
+}
